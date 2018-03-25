@@ -1,5 +1,3 @@
-import threading
-
 from tornado import web
 from tornado.ioloop import IOLoop
 from sqlalchemy import create_engine
@@ -7,10 +5,8 @@ import time
 
 class queryHandler(web.RequestHandler):
 
-    #@web.asynchronous
     def get(self, *args):
         func = self.get_argument("function")
-        print(str(func))
         func = func[1:-1]
         eng = create_engine("sqlite:///mydb.db")
         conn = eng.connect()
@@ -31,10 +27,6 @@ class queryHandler(web.RequestHandler):
             rows = rows[1:-2]
             count_old = count
             count = int(rows)
-
-        # price > 40 http://localhost:8888/?function={price%3E40}
-        # exchange = 'Bitfinex' http://localhost:8888/?function={exchange="Bitfinex"}
-        # pair = BTCUSD http://localhost:8888/?function={pairname="BTCUSD"}
 
 class displayOrderBook(web.RequestHandler):
 
