@@ -1,15 +1,13 @@
 """Simple Web socket client implementation using Tornado framework.
 """
-import tornado
 from tornado import escape
 from tornado import gen
 from tornado import httpclient
 from tornado import httputil
 from tornado import ioloop
-from tornado import websocket, web
+from tornado import websocket
 import json
 from sqlalchemy import create_engine
-from tornado.web import Application
 
 APPLICATION_JSON = 'application/json'
 DEFAULT_CONNECT_TIMEOUT = 60
@@ -32,21 +30,14 @@ class orderBook():
 
 
     def addToDB(self, orderBook):
-        # conn.execute("INSERT INTO orderBooks (id, type, price, amount, count, exchange, pairname) " +
-        #                 "VALUES (" + str(orderBook.id) + ", '" + str(orderBook.type) + "', " + str(orderBook.price) +
-        #                 ", " + str(orderBook.amount) + ", " + str(orderBook.count) + ", '" + str(orderBook.exchange) +
-        #                 "', 'BTCUSD')")
-        # print('kashdbh')
         conn.execute("INSERT INTO orderBooks (type, price, amount, count, exchange, pairname) " +
                      "VALUES ('" + str(orderBook.type) + "', " + str(orderBook.price) +
                      ", " + str(orderBook.amount) + ", " + str(orderBook.count) + ", '" + str(orderBook.exchange) +
                      "', 'BTCUSD')")
-        # conn.execute("INSERT INTO orderBooks (id, type, price, amount, count, exchange, pairname) VALUES (1, 'raunak', 2.3, 3.4, 3.4, 'jodhawat', 'cool')")
         # print('PRIMARY KEY: {id} .TYPE: {type} .PRICE: {price} .COUNT: {count} .AMOUNT: {amount} .EXCHANGE: {exchange} .'
         #      'Pairname: BTCUSD .'.format( id=orderBook.id,type=orderBook.type,
         #                                                                   price=orderBook.price,count=orderBook.count,
         #                                                                 amount=orderBook.amount,exchange=orderBook.exchange))
-
         pass
 class WebSocketClient():
 
