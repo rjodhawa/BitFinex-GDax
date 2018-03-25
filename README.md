@@ -10,6 +10,7 @@ Download the following packages for python
 Steps To launch the program:
 1. Launch  NobleWebSocket.py
 2. Launch WebAPI.py
+3. Open Browser and perform operations
 
 # NobleWebSocket
 This program continously adds data to SQLLITE database from the time it is started, until we close the program. It fetches data from BitFinex and Gdax parse it and stores it in DB continously.
@@ -18,8 +19,9 @@ This program continously adds data to SQLLITE database from the time it is start
 Listens at port 4200 and displays results of the query on web browser.
 
 # Warning:
-You would have to stop and rerun the WebAPI.py everytime a new query is requested
---Accepted Query Pattern Example
+You would have to stop and rerun the WebAPI.py everytime a new query is requested.
+
+# Accepted Query Pattern Example
 - Search for exchange as being either BitFinex or GDax http://localhost:4200/?function={exchange="Bitfinex"} 
 - Search for orderBook type as being either ask or bid http://localhost:4200/?function={type="ask"}
 - Search by price http://localhost:4200/?function={price>9000}
