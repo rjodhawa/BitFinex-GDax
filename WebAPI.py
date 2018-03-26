@@ -5,6 +5,7 @@ import time
 
 class queryHandler(web.RequestHandler):
 
+    @web.asynchronous
     def get(self, *args):
         func = self.get_argument("function")
         func = func[1:-1]
@@ -17,9 +18,9 @@ class queryHandler(web.RequestHandler):
         count_old = 0
         for i in range(0, count):
             conn = eng.connect()
-            results = conn.execute("SELECT type, price, amount, count, exchange, pairname FROM orderBooks WHERE " + func +" AND ROWID <" + str(count) + " AND ROWID >="+ str(count_old))
+            results = conn.execute("SELECT type, price, amount, count, exchange, pairname FROM orderBooks WHERE " + func +" AND ROWID < " + str(count) + " AND ROWID >= "+ str(count_old))
             for rows in results:
-                self.write(str(rows)+ "<BR>")
+                self.write(str(rows) + "<BR>")
                 time.sleep(0.1)
                 self.flush(str(rows))
             rows = conn.execute("SELECT COUNT(*) FROM orderBooks")
@@ -27,6 +28,7 @@ class queryHandler(web.RequestHandler):
             rows = rows[1:-2]
             count_old = count
             count = int(rows)
+        self.finish()
 
 class displayOrderBook(web.RequestHandler):
 
