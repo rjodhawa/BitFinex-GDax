@@ -42,12 +42,12 @@ You would have to stop and rerun the WebAPI.py everytime a new query is requeste
 - To View Snapshot updates to order Books http://localhost:4200/noble-markets-order-book-snapshot
 
 # Accepted Query Pattern Example
-- Search for exchange as being either BitFinex or GDax http://localhost:4200/?function={exchange="Bitfinex"} 
-- Search for orderBook type as being either ask or bid http://localhost:4200/?function={type="ask"}
-- Search by price http://localhost:4200/?function={price>9000}
-- Search by amount {amount>200}
-- Search by count {count<1}
-- Search by pairname {pairname="BTCUSD"} :Currently The value fetched is only of type BTCUSD 
+- Search for exchange as being either BitFinex or GDax http://localhost:4200/?function={exchange = 'Bitfinex'} 
+- Search for orderBook type as being either ask or bid http://localhost:4200/?function={type = 'ask'}
+- Search by price http://localhost:4200/?function={price > 9000}
+- Search by amount {amount > 200}
+- Search by count {count < 1}
+- Search by pairname {pairname = 'BTCUSD'} :Currently The value fetched is only of type BTCUSD 
 
 # Disclaimer
 All Prices are in USD
